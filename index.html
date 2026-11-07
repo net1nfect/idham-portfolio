@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhammad Idham Akbar · Security Portfolio 2026</title>
+<meta name="description" content="Portfolio of Muhammad Idham Akbar, cybersecurity student and AI-augmented offensive security researcher.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='6' fill='%23ff3b3f'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@600&f[]=cabinet-grotesk@400,500,700,800,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FAFAFA; --ink:#111; --soft:#55555c;
+  --red:#ff3b3f; --red-deep:#c00d14;
+  --pad:48px;
+  --kcap-h:54px; --kcap-r:14px; --kcap-edge:7px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{overflow-x:hidden;overflow-x:clip}
+body{
+  background:var(--bg); color:var(--ink);
+  font-family:'Cabinet Grotesk',sans-serif; font-weight:400;
+  min-height:100dvh; -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--red);color:#fff}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+a{color:inherit;text-decoration:none}
+
+/* ---------- layout shell ---------- */
+.shell{min-height:100dvh;display:flex;flex-direction:column;padding:0 var(--pad)}
+@media(max-width:1024px){:root{--pad:24px}}
+@media(max-width:640px){:root{--pad:14px}}
+
+/* ---------- nav ---------- */
+nav{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:24px;padding:26px 0 10px;
+}
+.logo{width:112px;flex:none;mix-blend-mode:multiply;display:block}
+.logo img{width:100%;display:block}
+.nav-menu{display:flex;gap:34px;list-style:none}
+.nav-menu button{
+  font-weight:700;font-size:15px;color:var(--ink);position:relative;
+  padding:4px 2px;transition:opacity .15s, transform .12s ease;
+}
+.nav-menu button:hover{opacity:.65}
+.nav-menu button:active{transform:translateY(2px) scale(.94)}
+.nav-menu button::after{
+  content:"";position:absolute;left:2px;right:2px;bottom:-3px;height:2px;background:var(--red);
+  transform:scaleX(0);transform-origin:left;transition:transform .28s cubic-bezier(.22,1,.36,1);
+}
+.nav-menu button:hover::after{transform:scaleX(1)}
+@media(max-width:900px){.nav-menu{gap:20px}.nav-menu button{font-size:13.5px}}
+@media(max-width:640px){
+  nav{flex-wrap:wrap}
+  .nav-menu{order:3;width:100%;justify-content:center;gap:22px;padding-bottom:6px}
+  .logo{width:92px}
+}
+
+/* ---------- keycap ---------- */
+.keycap{
+  position:relative;display:inline-flex;align-items:center;gap:8px;
+  height:var(--kcap-h);padding:0 24px;border-radius:var(--kcap-r);
+  font-family:'Clash Display',sans-serif;font-weight:600;font-size:16px;
+  background:#fff;border:1px solid rgba(0,0,0,.10);
+  box-shadow:0 var(--kcap-edge) 0 #cfced2, 0 1px 0 rgba(0,0,0,.04) inset;
+  transition:transform .09s ease, box-shadow .09s ease;
+  transform:translateY(0); user-select:none; white-space:nowrap;
+}
+.keycap:hover{transform:translateY(-1px)}
+.keycap.pressed{transform:translateY(6px);box-shadow:0 1px 0 #cfced2}
+.keycap.dark{background:#1c1c22;color:#fff;box-shadow:0 var(--kcap-edge) 0 #000, 0 1px 0 rgba(255,255,255,.12) inset;border-color:#000}
+.keycap.dark.pressed{box-shadow:0 1px 0 #000}
+.kcap-note{
+  position:absolute;top:6px;right:9px;font-size:9px;line-height:1;
+  color:rgba(0,0,0,.35);font-weight:800;pointer-events:none;
+}
+.keycap.dark .kcap-note{color:rgba(255,255,255,.4)}
+
+/* ---------- hero ---------- */
+.hero{
+  flex:1;display:flex;align-items:flex-start;gap:12px;
+  padding-top:clamp(24px,4vh,48px);position:relative;
+}
+.hero-copy{width:46%;min-width:320px;position:relative;z-index:5;padding-top:8px}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--soft);
+}
+.eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--red);flex:none}
+h1{
+  font-family:'Clash Display',sans-serif;font-weight:600;
+  font-size:clamp(42px,5vw,84px);line-height:.98;letter-spacing:-.01em;
+  margin:22px 0 14px;max-width:16ch;
+}
+h1 .serif{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;padding-bottom:.06em}
+.role{font-family:'Clash Display',sans-serif;font-weight:600;font-size:clamp(20px,2.4vw,34px);line-height:1.12;margin-bottom:12px}
+.motto{font-family:'Instrument Serif',serif;font-style:italic;font-size:clamp(17px,1.5vw,22px);color:var(--soft);margin-bottom:14px}
+.focus-row{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--soft);margin-bottom:26px}
+.focus-row i{color:var(--red);font-style:normal}
+.sub{color:var(--soft);font-size:17px;max-width:36ch;margin-bottom:12px}
+.controls{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.counter{font-size:13px;font-weight:700;color:var(--soft);letter-spacing:.04em;margin-left:6px}
+.counter b{color:var(--ink)}
+
+/* ---------- gun ---------- */
+.gun-stage{
+  position:absolute;right:0;top:0;width:min(52vw,760px);
+  transform:rotate(calc(-16deg + var(--aim,0deg)));transform-origin:78% 40%;
+  filter:drop-shadow(0 42px 34px rgba(0,0,0,.22));
+  z-index:2;cursor:crosshair;transition:transform .3s ease;
+}
+.gun-stage:hover{transform:rotate(calc(-16deg + var(--aim,0deg))) scale(1.008)}
+.gun-stage.recoil{animation:recoil .16s ease-out}
+@keyframes recoil{0%{margin:0}30%{margin-left:-14px;margin-top:3px}62%{margin-left:5px;margin-top:-2px}100%{margin:0}}
+#trigger{transform-origin:60% 20%;transition:transform .1s ease}
+.gun-stage.recoil #trigger{transform:rotate(14deg)}
+
+/* ---------- slips flying ---------- */
+#slips{position:fixed;inset:0;pointer-events:none;z-index:40;overflow:hidden}
+.slip-fly{position:absolute;left:0;top:0;will-change:transform;transform-origin:center}
+
+/* ---------- tray ---------- */
+.tray-zone{width:46%;min-width:320px;position:relative;z-index:5;margin-top:54px;flex:1;display:flex;flex-direction:column;padding-bottom:34px}
+.tray-label{font-size:11px;font-weight:800;letter-spacing:.22em;color:var(--soft);text-transform:uppercase;margin-bottom:14px}
+.tray{
+  position:relative;flex:1;min-height:190px;
+  display:flex;flex-wrap:wrap;gap:10px;align-content:flex-start;align-items:flex-start;
+  padding:14px;
+  border:1.5px dashed rgba(0,0,0,.14);border-radius:16px;
+}
+.tray-empty-hint{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  color:rgba(0,0,0,.28);font-weight:700;font-size:14px;pointer-events:none;
+}
+.dock{
+  position:relative;transform-origin:center;cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  border-radius:7px;overflow:hidden;
+  transition:transform .18s ease, opacity .35s ease;
+  box-shadow:0 6px 14px rgba(0,0,0,.10);
+}
+.dock:hover{transform:translateY(-6px)}
+.dock.land{animation:land .34s cubic-bezier(.22,1,.36,1)}
+@keyframes land{
+  0%{transform:translateY(-12px) scale(.7)}
+  60%{transform:translateY(2px) scale(1.05)}
+  100%{transform:none}
+}
+.dock .w{font-weight:900;text-transform:uppercase;line-height:.95;letter-spacing:-.01em}
+.dock .s{font-size:8px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;opacity:.85;margin-top:3px;white-space:nowrap}
+.dock.big .w{font-size:calc(var(--dh) * .36)}
+.dock.big.longword .w{font-size:calc(var(--dh) * .30)}
+.dock.label .w{font-size:calc(var(--dh) * .30);text-align:center}
+.dock.hop{animation:hop .3s ease}
+@keyframes hop{0%{transform:translateY(0)}40%{transform:translateY(-8px)}100%{transform:translateY(0)}}
+
+/* ---------- detail card ---------- */
+.detail{
+  position:fixed;right:var(--pad);bottom:34px;z-index:60;
+  width:320px;padding:24px 26px;border-radius:18px;
+  background:rgba(255,255,255,.72);backdrop-filter:blur(18px) saturate(160%);
+  -webkit-backdrop-filter:blur(18px) saturate(160%);
+  border:1px solid rgba(255,255,255,.65);
+  box-shadow:0 24px 60px rgba(0,0,0,.18), inset 0 1px 0 rgba(255,255,255,.6);
+  opacity:0;transform:translateY(16px);pointer-events:none;
+  transition:opacity .25s ease, transform .25s ease;
+}
+.detail.open{opacity:1;transform:translateY(0);pointer-events:auto}
+.detail .kicker{font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--red-deep);margin-bottom:8px}
+.detail .proof{
+  display:none;width:100%;height:160px;object-fit:contain;object-position:center top;background:#fff;
+  border-radius:10px;margin-bottom:12px;border:1px solid rgba(0,0,0,.08);
+}
+.detail h3{font-family:'Clash Display',sans-serif;font-weight:600;font-size:26px;margin-bottom:6px}
+.detail p{color:var(--soft);font-size:14.5px;line-height:1.45}
+.detail .go{
+  display:inline-flex;align-items:center;gap:6px;margin-top:14px;
+  font-size:13px;font-weight:800;letter-spacing:.04em;color:var(--ink);
+  border-bottom:2px solid var(--red);padding-bottom:2px;
+}
+.detail .go:hover{color:var(--red-deep)}
+.detail .close{
+  position:absolute;top:12px;right:14px;font-size:16px;color:var(--soft);
+  width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+}
+.detail .close:hover{background:rgba(0,0,0,.06);color:var(--ink)}
+
+/* ---------- sections ---------- */
+.section{padding:96px var(--pad) 30px;max-width:1240px;margin:0 auto}
+.sec-head{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:44px}
+.sec-idx{font-size:12px;font-weight:800;color:var(--red-deep);letter-spacing:.22em}
+.sec-title{font-family:'Clash Display',sans-serif;font-weight:600;font-size:clamp(30px,3.4vw,52px);line-height:1}
+.sec-note{margin-left:auto;color:var(--soft);font-size:14px;max-width:34ch;text-align:right}
+@media(max-width:860px){.sec-note{margin-left:0;text-align:left}}
+
+.case-row{display:grid;grid-template-columns:48px 1.15fr .85fr;gap:26px;padding:32px 0;border-top:1px solid rgba(0,0,0,.12)}
+.case-row:last-of-type{border-bottom:1px solid rgba(0,0,0,.12)}
+.case-no{font-family:'Clash Display',sans-serif;font-weight:600;font-size:15px;color:var(--red-deep)}
+.case-name{font-family:'Clash Display',sans-serif;font-weight:600;font-size:clamp(20px,1.9vw,27px);line-height:1.1;margin-bottom:8px}
+.case-desc{color:var(--soft);font-size:15px;line-height:1.55;max-width:54ch}
+.case-meta{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--soft);margin-bottom:12px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:4px}
+.chip{font-size:11px;font-weight:800;letter-spacing:.08em;padding:5px 11px;border-radius:999px;border:1px solid rgba(0,0,0,.16)}
+.case-link{display:inline-flex;margin-top:14px;font-size:13px;font-weight:800;border-bottom:2px solid var(--red);padding-bottom:2px}
+.case-link:hover{color:var(--red-deep)}
+.case-thumb{width:100%;max-width:280px;border-radius:10px;border:1px solid rgba(0,0,0,.08);display:block;margin-bottom:12px}
+@media(max-width:860px){.case-row{grid-template-columns:1fr;gap:10px}}
+
+.wins-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.win-card{background:#fff;border:1px solid rgba(0,0,0,.12);border-radius:16px;padding:22px;transition:transform .2s ease, box-shadow .2s ease}
+.win-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(0,0,0,.10)}
+.win-place{font-family:'Clash Display',sans-serif;font-weight:600;font-size:46px;line-height:1;color:var(--red-deep)}
+.win-title{font-family:'Clash Display',sans-serif;font-weight:600;font-size:21px;margin:8px 0 2px}
+.win-event{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--soft);margin-bottom:8px}
+.win-detail{color:var(--soft);font-size:14.5px;line-height:1.5}
+.win-card img{width:100%;height:170px;object-fit:contain;object-position:center top;background:#fff;border-radius:10px;margin-bottom:14px;border:1px solid rgba(0,0,0,.08)}
+.win-link{display:inline-flex;margin-top:12px;font-size:13px;font-weight:800;border-bottom:2px solid var(--red);padding-bottom:2px}
+.win-link:hover{color:var(--red-deep)}
+@media(max-width:860px){.wins-grid{grid-template-columns:1fr}}
+
+.about-lead{font-family:'Clash Display',sans-serif;font-weight:600;font-size:clamp(22px,2.4vw,34px);line-height:1.25;max-width:28ch;margin-bottom:40px}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-bottom:38px}
+.facts dt{font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--soft);margin-bottom:8px}
+.facts dd{font-size:15px;line-height:1.55}
+@media(max-width:860px){.facts{grid-template-columns:1fr}}
+.cert-row{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:14px}
+.cert{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid rgba(0,0,0,.12);border-radius:12px;padding:8px 16px 8px 8px}
+.cert img{width:40px;height:40px;object-fit:cover;object-position:top;border-radius:8px}
+.cert b{font-size:13px;display:block;line-height:1.2}
+.cert span{font-size:11px;color:var(--soft)}
+.chip-row{display:flex;flex-wrap:wrap;gap:8px}
+
+/* about: sticky scroll-scrubbed portrait */
+.about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:44px;align-items:start}
+.about-sticky{position:relative}
+.seq-frame{
+  border-radius:18px;overflow:hidden;border:1px solid rgba(0,0,0,.1);
+  background:#fff;box-shadow:0 24px 60px rgba(0,0,0,.14);
+  transition:transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s ease;
+}
+.seq-frame:hover{transform:translateY(-6px) rotate(-1deg);box-shadow:0 34px 70px rgba(0,0,0,.18)}
+.seq-frame img{width:100%;height:auto;display:block}
+.seq-cap{font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--soft);margin-top:12px}
+@media(max-width:960px){
+  .about-grid{grid-template-columns:1fr;gap:26px}
+  .about-sticky{position:static;max-width:320px}
+}
+/* long scrub runway removed: portrait is a static card now */
+@media(min-width:961px){
+  #about .about-grid{align-items:center}
+}
+.about-close{
+  font-family:'Clash Display',sans-serif;font-weight:600;
+  font-size:clamp(20px,2vw,30px);line-height:1.3;max-width:30ch;margin-top:64px;
+}
+
+.contact-wrap{display:flex;flex-direction:column;align-items:flex-start;gap:20px;padding-bottom:70px}
+.big-mail{font-family:'Clash Display',sans-serif;font-weight:600;font-size:clamp(24px,3.6vw,50px);border-bottom:3px solid var(--red);line-height:1.25;word-break:break-all}
+.big-mail:hover{color:var(--red-deep)}
+.contact-row{display:flex;flex-wrap:wrap;gap:12px}
+.contact-row .keycap{height:46px;padding:0 18px;font-size:14px}
+
+/* reveal on scroll */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .6s ease, transform .6s ease}
+.rv.in{opacity:1;transform:none}
+.rv.done{transition:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+
+/* nav active state */
+.nav-menu button.active{color:var(--red-deep)}
+.nav-menu button.active::after{transform:scaleX(1)}
+
+/* scroll-driven motion: gun drifts, hero copy fades away (progressive enhancement) */
+@supports (animation-timeline: scroll()){
+  @media(prefers-reduced-motion:no-preference){
+    .gun-stage{animation:gunDrift linear both;animation-timeline:scroll(root block);animation-range:0 640px}
+    .hero-copy{animation:heroFade linear both;animation-timeline:scroll(root block);animation-range:0 560px}
+    @keyframes gunDrift{to{transform:rotate(calc(-16deg + var(--aim,0deg))) translateY(48px) scale(.94)}}
+    @keyframes heroFade{to{opacity:.22;transform:translateY(-28px)}}
+  }
+}
+
+/* scroll progress bar (scroll-driven, zero JS) */
+.progress{
+  position:fixed;top:0;left:0;right:0;height:3px;background:var(--red);
+  transform-origin:0 50%;transform:scaleX(0);z-index:100;
+}
+@supports (animation-timeline: scroll()){
+  .progress{animation:pgrow linear both;animation-timeline:scroll(root block)}
+  @keyframes pgrow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+}
+
+/* ---------- marquee ---------- */
+.marquee{border-top:1px solid rgba(0,0,0,.12);border-bottom:1px solid rgba(0,0,0,.12);overflow:hidden;padding:16px 0;margin-top:6px}
+.mtrack{display:flex;width:max-content;animation:mq 30s linear infinite}
+.marquee:hover .mtrack{animation-play-state:paused}
+.mtrack span{font-family:'Clash Display',sans-serif;font-weight:600;font-size:clamp(26px,3vw,42px);white-space:nowrap;letter-spacing:.02em;padding-right:34px}
+.mtrack span.o{color:transparent;-webkit-text-stroke:1.5px #111}
+@keyframes mq{to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.mtrack{animation:none}}
+
+/* ---------- gun alive: idle bob + muzzle flash ---------- */
+.gun-stage svg{animation:bob 6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(6px)}}
+@media(prefers-reduced-motion:reduce){.gun-stage svg{animation:none}}
+#mflash{opacity:0;transform-origin:118px 258px}
+.gun-stage.firing #mflash{animation:mflash .13s ease-out}
+@keyframes mflash{0%{opacity:0;transform:scale(.4)}35%{opacity:1;transform:scale(1.15)}100%{opacity:0;transform:scale(1.6)}}
+.shell-casing{position:absolute;left:0;top:0;width:14px;height:6px;border-radius:2px;background:#d9a441;box-shadow:inset 0 -2px 0 rgba(0,0,0,.35);will-change:transform;pointer-events:none}
+.smoke{position:absolute;width:26px;height:26px;border-radius:50%;background:rgba(120,120,128,.32);filter:blur(6px);pointer-events:none;animation:smokeUp 1.15s ease-out forwards}
+@keyframes smokeUp{to{transform:translate(var(--sx),var(--sy)) scale(2.4);opacity:0}}
+
+/* ---------- terminal ---------- */
+#term{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(18px);width:min(760px,94vw);height:min(56vh,480px);z-index:90;background:#0d0d12;border-radius:14px;box-shadow:0 40px 90px rgba(0,0,0,.45);display:flex;flex-direction:column;opacity:0;transition:opacity .2s ease,transform .22s cubic-bezier(.22,1,.36,1);overflow:hidden;border:1px solid #26262e}
+#term.open{opacity:1;transform:translateX(-50%) translateY(0)}
+.term-bar{display:flex;align-items:center;gap:8px;padding:10px 14px;background:#16161d;font-size:12px;color:#9a9aa5;font-weight:700;letter-spacing:.06em;cursor:grab;user-select:none;touch-action:none}
+.term-bar.grabbing{cursor:grabbing}
+.term-dot{width:10px;height:10px;border-radius:50%;background:#ff5f57;box-shadow:16px 0 0 #febc2e,32px 0 0 #28c840;margin-right:34px}
+.term-bar button{margin-left:auto;color:#9a9aa5;font-size:14px}
+.term-bar button:hover{color:#fff}
+.term-out{flex:1;overflow-y:auto;padding:14px 16px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;line-height:1.6;color:#d7d7de;white-space:pre-wrap}
+.term-out .p{color:#ff6b6e;font-weight:700}
+.term-out .g{color:#3fe0a8}
+.term-out .dim{color:#7c7c88}
+.term-line{display:flex;align-items:center;gap:10px;padding:12px 16px;border-top:1px solid #1e1e26;font-family:ui-monospace,Menlo,monospace;font-size:13px}
+.term-ps{color:#ff6b6e;font-weight:700;white-space:nowrap}
+#termIn{flex:1;background:none;border:0;outline:none;color:#d7d7de;font:inherit;caret-color:#ff6b6e}
+.hint{color:rgba(0,0,0,.4);font-size:13px;font-weight:700;white-space:nowrap}
+.hint b{border:1px solid rgba(0,0,0,.25);border-bottom-width:2.5px;border-radius:4px;padding:0 6px;font-weight:800}
+
+/* ---------- responsive ---------- */
+@media(max-width:860px){
+  .hero{flex-direction:column;padding-top:10px}
+  .hero-copy{width:100%;min-width:0}
+  .gun-stage{position:relative;width:min(92vw,520px);margin:-8px auto 0;right:auto}
+  .tray-zone{width:100%;min-width:0;margin-top:14px}
+  h1{margin:16px 0 14px}
+  .sub{margin-bottom:22px}
+}
+
+/* ---------- reduced motion ---------- */
+@media(prefers-reduced-motion:reduce){
+  .gun-stage.recoil{animation-duration:.4s}
+  .dock,.keycap,.detail{transition-duration:.05s}
+}
+</style>
+</head>
+<body>
+<div class="progress" aria-hidden="true"></div>
+<div class="shell">
+
+  <nav>
+    <a class="logo" href="#" aria-label="Muhammad Idham Akbar home"><img src="logo.png" alt="Idham logo"></a>
+    <ul class="nav-menu">
+      <li><button data-cat="work">Work</button></li>
+      <li><button data-cat="wins">Wins</button></li>
+      <li><button data-cat="about">About</button></li>
+      <li><button data-cat="contact">Contact</button></li>
+    </ul>
+    <a class="keycap" href="mailto:idhamygy@gmail.com" style="height:46px;padding:0 18px;font-size:14px">
+      Let's Talk <span aria-hidden="true">↗</span><span class="kcap-note">@</span>
+    </a>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-copy">
+      <span class="eyebrow"><span class="dot"></span>PORTFOLIO · 2026</span>
+      <h1><span class="serif">Muhammad Idham Akbar</span></h1>
+      <p class="role">Offensive Security Researcher &amp; Software Builder</p>
+      <p class="motto">Researching vulnerabilities. Building tools. Challenging systems.</p>
+      <p class="focus-row"><span>Offensive Security</span><i>·</i><span>Web Application Security</span><i>·</i><span>Security Tooling</span><i>·</i><span>AI-Augmented Engineering</span></p>
+      <p class="sub">My work comes out of this gun. Pull the trigger and catch a slip. <span class="hint">Press <b>~</b> for the terminal.</span></p>
+      <div class="controls">
+        <button class="keycap dark" id="sprayBtn">Spray my skills<span class="kcap-note">⏎</span></button>
+        <button class="keycap" id="cleanBtn">Clean up<span class="kcap-note">↺</span></button>
+        <span class="counter"><b id="count">0</b> skills sprayed</span>
+      </div>
+    </div>
+
+    <div class="gun-stage" id="gunStage" title="Click the gun to fire">
+      <svg viewBox="0 0 940 560" width="100%">
+        <defs>
+          <linearGradient id="gTop" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#ff5a5e"/><stop offset="1" stop-color="#ff3a40"/>
+          </linearGradient>
+          <linearGradient id="gSide" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#ff3b3f"/><stop offset=".55" stop-color="#e0141c"/><stop offset="1" stop-color="#a50a10"/>
+          </linearGradient>
+          <linearGradient id="gBack" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#c00d14"/><stop offset="1" stop-color="#7d050a"/>
+          </linearGradient>
+          <linearGradient id="gHandle" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#ff3036"/><stop offset=".5" stop-color="#d9121a"/><stop offset="1" stop-color="#9c080e"/>
+          </linearGradient>
+        </defs>
+
+        <!-- handle (behind body) -->
+        <polygon points="640,320 760,320 700,540 596,540" fill="url(#gHandle)"/>
+        <polygon points="700,540 596,540 588,522 692,522" fill="#7a060b"/>
+        <line x1="646" y1="330" x2="600" y2="522" stroke="rgba(255,255,255,.35)" stroke-width="3"/>
+
+        <!-- top face -->
+        <polygon points="150,150 720,150 770,104 200,104" fill="url(#gTop)"/>
+        <!-- back face -->
+        <rect x="720" y="150" width="58" height="216" fill="url(#gBack)"/>
+        <!-- main side -->
+        <rect x="150" y="150" width="570" height="216" rx="6" fill="url(#gSide)"/>
+
+        <!-- highlight + panel lines + rivets -->
+        <line x1="158" y1="162" x2="712" y2="162" stroke="rgba(255,255,255,.75)" stroke-width="4" stroke-linecap="round"/>
+        <line x1="240" y1="200" x2="240" y2="340" stroke="rgba(0,0,0,.14)" stroke-width="3"/>
+        <line x1="600" y1="200" x2="600" y2="340" stroke="rgba(0,0,0,.14)" stroke-width="3"/>
+        <circle cx="200" cy="330" r="6" fill="#7d050a"/><circle cx="200" cy="330" r="2.5" fill="#4a0206"/>
+        <circle cx="330" cy="330" r="6" fill="#7d050a"/><circle cx="330" cy="330" r="2.5" fill="#4a0206"/>
+        <circle cx="500" cy="330" r="6" fill="#7d050a"/><circle cx="500" cy="330" r="2.5" fill="#4a0206"/>
+        <circle cx="672" cy="330" r="6" fill="#7d050a"/><circle cx="672" cy="330" r="2.5" fill="#4a0206"/>
+
+        <!-- PORTFOLIO -->
+        <text x="435" y="300" text-anchor="middle" font-family="Cabinet Grotesk, sans-serif" font-weight="900" font-size="64" fill="#fff" letter-spacing="2">PORTFOLIO</text>
+
+        <!-- muzzle -->
+        <rect x="108" y="176" width="46" height="168" fill="#8f0910"/>
+        <rect x="118" y="190" width="40" height="140" fill="#2a0203"/>
+
+        <!-- trigger guard + trigger -->
+        <path d="M 560 366 q 0 74 66 74 l 40 0 q 10 -20 -6 -26 l -34 0 q -40 0 -40 -48 z" fill="#8a060b"/>
+        <rect id="trigger" x="590" y="368" width="16" height="52" rx="8" fill="#8a060b"/>
+
+        <!-- muzzle flash (fires with .firing) -->
+        <g id="mflash">
+          <polygon points="118,258 66,234 102,262 56,270 102,278 74,300 118,268" fill="#ffd23f"/>
+          <polygon points="118,258 86,246 104,260 82,270 104,276 118,266" fill="#fff"/>
+        </g>
+
+        <!-- muzzle TIP anchor: left edge of the dark slot, vertical center -->
+        <rect id="muzzleAnchor" x="118" y="257" width="3" height="6" fill="none"/>
+        <!-- shell ejection anchor: top of the back face -->
+        <rect id="shellAnchor" x="748" y="238" width="3" height="6" fill="none"/>
+      </svg>
+    </div>
+  </section>
+
+  <section class="tray-zone">
+    <div class="tray-label">WHAT CAME OUT · CLICK A SLIP</div>
+    <div class="tray" id="tray">
+      <div class="tray-empty-hint" id="trayHint">Nothing sprayed yet. Pull the trigger.</div>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="mtrack">
+      <span>PYTHON</span><span class="o">BURP SUITE</span><span>GHIDRA</span><span class="o">KALI LINUX</span><span>REACT</span><span class="o">LARAVEL</span><span>DOCKER</span><span class="o">SQLMAP</span><span>TAILWIND</span><span class="o">NMAP</span><span>WIRESHARK</span><span class="o">OSINT</span>
+      <span>PYTHON</span><span class="o">BURP SUITE</span><span>GHIDRA</span><span class="o">KALI LINUX</span><span>REACT</span><span class="o">LARAVEL</span><span>DOCKER</span><span class="o">SQLMAP</span><span>TAILWIND</span><span class="o">NMAP</span><span>WIRESHARK</span><span class="o">OSINT</span>
+    </div>
+  </div>
+
+  <!-- ============ 01 · WORK ============ -->
+  <section class="section" id="work" aria-labelledby="work-h">
+    <div class="sec-head rv">
+      <span class="sec-idx">01</span>
+      <h2 class="sec-title" id="work-h">Work</h2>
+      <p class="sec-note">Six things I built. Every link here goes somewhere real — the one private project says so.</p>
+    </div>
+
+    <div class="case-row rv">
+      <span class="case-no">A</span>
+      <div>
+        <h3 class="case-name">WTH-AI</h3>
+        <p class="case-desc">CLI bug-bounty copilot combining multi-provider LLMs, a permission-gated terminal, an asset graph, a Discord/Telegram bot and evidence-based anti-hallucination (TTST). Built for authorized testing: own systems, labs, CTFs and in-scope bug bounty.</p>
+      </div>
+      <div>
+        <p class="case-meta">Realtime bug hunter · Python · v1.0</p>
+        <div class="chips"><span class="chip">Python</span><span class="chip">Multi-provider LLM</span><span class="chip">Asset graph</span><span class="chip">Discord / Telegram bot</span></div>
+        <a class="case-link" href="https://github.com/net1nfect/wth-ai" target="_blank" rel="noopener">View on GitHub ↗</a>
+      </div>
+    </div>
+
+    <div class="case-row rv">
+      <span class="case-no">B</span>
+      <div>
+        <h3 class="case-name">H1R3V</h3>
+        <p class="case-desc">A static-first first pass of reverse engineering: identifies and hashes a binary, pulls strings, triages ELF/PE/APK samples, collects radare2 evidence and hands off to Ghidra headless — then writes it all up as an evidence brief. Nothing executes without an approval gate.</p>
+      </div>
+      <div>
+        <p class="case-meta">RE triage assistant · Shell + Python</p>
+        <div class="chips"><span class="chip">Shell</span><span class="chip">Python</span><span class="chip">radare2</span><span class="chip">Ghidra</span><span class="chip">YARA</span><span class="chip">binwalk</span></div>
+        <a class="case-link" href="https://github.com/net1nfect/h1r3v" target="_blank" rel="noopener">View on GitHub ↗</a>
+      </div>
+    </div>
+
+    <div class="case-row rv">
+      <span class="case-no">C</span>
+      <div>
+        <h3 class="case-name">Windows Red Team Agent</h3>
+        <p class="case-desc">Isolated-lab research prototype to study persistence, evasion, data collection and encrypted command-and-control techniques — documented alongside the defensive monitoring, detection, incident-response and authorization requirements.</p>
+      </div>
+      <div>
+        <p class="case-meta">Red team lab · Python + C · Research</p>
+        <div class="chips"><span class="chip">Python</span><span class="chip">C</span><span class="chip">Evasion research</span><span class="chip">Encrypted C2</span></div>
+        <a class="case-link" href="https://github.com/net1nfect/windows-exploit" target="_blank" rel="noopener">View on GitHub ↗</a>
+      </div>
+    </div>
+
+    <div class="case-row rv">
+      <span class="case-no">D</span>
+      <div>
+        <h3 class="case-name">MA Futuhiyah school system</h3>
+        <p class="case-desc">A role-based information system for a madrasah: fifteen domain modules where each owns its data, permission-based workspaces per role with 2FA, and staged deployment with user-acceptance testing backed by automated browser tests. Currently in acceptance testing — the repository is private, so there is no demo link.</p>
+      </div>
+      <div>
+        <p class="case-meta">Full-stack developer · 2026 · Private</p>
+        <img class="case-thumb" src="assets/ma-admin.webp" alt="Admin workspace of the MA Futuhiyah school system" loading="lazy">
+        <div class="chips"><span class="chip">Laravel</span><span class="chip">Inertia + React</span><span class="chip">Tailwind CSS</span><span class="chip">SQL</span><span class="chip">Docker</span></div>
+      </div>
+    </div>
+
+    <div class="case-row rv">
+      <span class="case-no">E</span>
+      <div>
+        <h3 class="case-name">CTF skills</h3>
+        <p class="case-desc">Agent Skills for solving CTF challenges — web exploitation, binary pwn, crypto, reverse engineering, forensics and OSINT. Works with any tool that supports the Agent Skills spec.</p>
+      </div>
+      <div>
+        <p class="case-meta">Agent skills · Python</p>
+        <div class="chips"><span class="chip">CTF</span><span class="chip">Web</span><span class="chip">Pwn</span><span class="chip">Crypto</span><span class="chip">Forensics</span><span class="chip">OSINT</span></div>
+        <a class="case-link" href="https://github.com/net1nfect/ctf" target="_blank" rel="noopener">View on GitHub ↗</a>
+      </div>
+    </div>
+
+    <div class="case-row rv">
+      <span class="case-no">F</span>
+      <div>
+        <h3 class="case-name">Payload-all</h3>
+        <p class="case-desc">Curated payload collections for authorized security testing: SQLi, XSS, LFI and more, kept as plain-text lists for quick reuse in labs.</p>
+      </div>
+      <div>
+        <p class="case-meta">Payload arsenal · Text collections</p>
+        <div class="chips"><span class="chip">SQLi</span><span class="chip">XSS</span><span class="chip">LFI</span></div>
+        <a class="case-link" href="https://github.com/net1nfect/payload-all" target="_blank" rel="noopener">View on GitHub ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 02 · WINS ============ -->
+  <section class="section" id="wins" aria-labelledby="wins-h">
+    <div class="sec-head rv">
+      <span class="sec-idx">02</span>
+      <h2 class="sec-title" id="wins-h">Wins</h2>
+      <p class="sec-note">Where the work was put under pressure.</p>
+    </div>
+    <div class="wins-grid">
+      <div class="win-card rv">
+        <img src="assets/playit.webp" alt="PLAY IT 2026 Cyber Combat certificate" loading="lazy">
+        <div class="win-place">2nd</div>
+        <h3 class="win-title">Cyber Combat</h3>
+        <p class="win-event">PLAY IT 2026 · Politeknik Negeri Malang · Jun 2026</p>
+        <p class="win-detail">National attack-and-defense competition. Team newfolder_ finished second overall in the Cyber Combat category.</p>
+      </div>
+      <div class="win-card rv">
+        <div class="win-place">2nd</div>
+        <h3 class="win-title">Best Attack</h3>
+        <p class="win-event">PLAY IT 2026 · Cyber Combat</p>
+        <p class="win-detail">Second in the Best Attack category of Cyber Combat, recognized for attack execution quality by the organiser.</p>
+        <a class="win-link" href="https://www.instagram.com/p/DaW0jz9D2-J/" target="_blank" rel="noopener">Organiser announcement ↗</a>
+      </div>
+      <div class="win-card rv">
+        <img src="assets/sevima.webp" alt="SEVIMA Security Challenge 2026 award" loading="lazy">
+        <div class="win-place">7th</div>
+        <h3 class="win-title">SEVIMA Security Challenge</h3>
+        <p class="win-event">Bug bounty programme · Sep 2026</p>
+        <p class="win-detail">Seventh of 41 teams and 271 participants, as team lead of NSA-LR, by identifying and reporting security weaknesses on the SEVIMA platform.</p>
+      </div>
+      <div class="win-card rv">
+        <div class="win-place">1st</div>
+        <h3 class="win-title">Campus CTF</h3>
+        <p class="win-event">Politeknik Negeri Cilacap</p>
+        <p class="win-detail">Won the internal Capture The Flag competition covering offensive security problem-solving.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 03 · ABOUT ============ -->
+  <section class="section" id="about" aria-labelledby="about-h">
+    <div class="sec-head rv">
+      <span class="sec-idx">03</span>
+      <h2 class="sec-title" id="about-h">About</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-sticky rv">
+        <div class="seq-frame">
+          <img src="assets/seq/0000.webp" alt="Portrait of Muhammad Idham Akbar, drawn as a layered relief" loading="lazy">
+        </div>
+        <p class="seq-cap">Portrait · layered relief render</p>
+      </div>
+      <div class="about-body">
+        <p class="about-lead rv">I study how systems fail, and I build software that is meant <em>not</em> to.</p>
+        <dl class="facts">
+          <div class="rv">
+            <dt>Studying</dt>
+            <dd>D4 Cybersecurity Engineering at Politeknik Negeri Cilacap, since 2024. GPA 3.12/4.00. Focus on red team, web security, penetration testing and digital forensics.</dd>
+          </div>
+          <div class="rv">
+            <dt>Activities</dt>
+            <dd>Campus ambassador (Duta Kampus) for the institute, and red team speaker at JKB Learning Center 2026 under HIMA Komputer dan Bisnis.</dd>
+          </div>
+          <div class="rv">
+            <dt>Building</dt>
+            <dd>A role-based school information system in Laravel, and a static-first reverse-engineering assistant — most of it done with AI-assisted workflows.</dd>
+          </div>
+        </dl>
+        <div class="cert-row rv">
+          <div class="cert"><img src="assets/ccna.webp" alt="CCNA certificate" loading="lazy"><div><b>CCNA: Introduction to Networks</b><span>Cisco Networking Academy · Jul 2025</span></div></div>
+          <div class="cert"><img src="assets/vsga.webp" alt="VSGA certificate" loading="lazy"><div><b>Junior Network Administrator</b><span>Komdigi VSGA · 24 h · Jul 2025</span></div></div>
+        </div>
+        <div class="chip-row rv">
+          <span class="chip">Learn-A-Thon 2025 · Cisco</span>
+          <span class="chip">Intro to Cybersecurity · Cisco · Oct 2025</span>
+          <span class="chip">Ethical Hacker For Dummies · Komdigi · Feb 2026</span>
+          <span class="chip">Introduction to Cyber Security · Komdigi · Feb 2026</span>
+          <span class="chip">Pengantar Mindset Digital 1 · Komdigi · Jul 2025</span>
+        </div>
+        <p class="about-close rv">Cybersecurity undergraduate focused on offensive security, web application security, and applied vulnerability research.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 04 · CONTACT ============ -->
+  <section class="section" id="contact" aria-labelledby="contact-h">
+    <div class="sec-head rv">
+      <span class="sec-idx">04</span>
+      <h2 class="sec-title" id="contact-h">Contact</h2>
+      <p class="sec-note">Central Java, Indonesia. Open to security research and full-stack work.</p>
+    </div>
+    <div class="contact-wrap">
+      <a class="big-mail rv" href="mailto:idhamygy@gmail.com">idhamygy@gmail.com</a>
+      <div class="contact-row rv">
+        <a class="keycap" href="https://github.com/net1nfect" target="_blank" rel="noopener">GitHub ↗<span class="kcap-note">@</span></a>
+        <a class="keycap" href="https://www.linkedin.com/in/muhammad-idham-akbar-390765346/" target="_blank" rel="noopener">LinkedIn ↗<span class="kcap-note">in</span></a>
+        <a class="keycap" href="https://www.instagram.com/p/DaW0jz9D2-J/" target="_blank" rel="noopener">Best Attack ↗<span class="kcap-note">IG</span></a>
+        <a class="keycap" href="tel:+6285641852592">WhatsApp · +62 856-4185-2592<span class="kcap-note">☎</span></a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div id="slips"></div>
+
+<aside class="detail" id="detail" aria-live="polite">
+  <button class="close" id="detailClose" aria-label="Close">✕</button>
+  <div class="cno" id="dNo"></div>
+  <img class="proof" id="dProof" alt="">
+  <div class="kicker" id="dKicker"></div>
+  <h3 id="dTitle"></h3>
+  <p id="dLine"></p>
+  <a class="go" id="dLink" href="#" target="_blank" rel="noopener" hidden>Open ↗</a>
+  <div class="stamp" aria-hidden="true">VERIFIED</div>
+</aside>
+
+<div id="term" hidden>
+  <div class="term-bar" title="Drag to move · double-click to re-center"><span class="term-dot"></span>idham@portfolio — zsh<button id="termClose" aria-label="Close terminal">✕</button></div>
+  <div class="term-out" id="termOut"></div>
+  <div class="term-line"><span class="term-ps">idham@portfolio:~$</span><input id="termIn" autocomplete="off" spellcheck="false" aria-label="Terminal input"></div>
+</div>
+
+<script>
+(function(){
+"use strict";
+/* ================= data (from CV + GitHub README, no invented claims) ================= */
+const GH = "https://github.com/net1nfect/";
+const PROJECTS = [
+  {word:"WTH-AI",         kicker:"Realtime bug hunter", line:"CLI bug-bounty copilot: multi-provider LLM, asset graph, Discord/Telegram bot.", cat:"work", big:1, href:GH+"wth-ai", linkLabel:"View on GitHub"},
+  {word:"H1R3V",          kicker:"RE triage",           line:"Static-first RE triage: ELF/PE/APK, radare2 + Ghidra, approval-gated execution.", cat:"work", big:1, href:GH+"h1r3v", linkLabel:"View on GitHub"},
+  {word:"Windows-exploit",kicker:"Red team lab",        line:"Isolated-lab research prototype: persistence, evasion, encrypted C2.", cat:"work", big:1, href:GH+"windows-exploit", linkLabel:"View on GitHub"},
+  {word:"MA Futuhiyah",   kicker:"Full-stack developer",line:"Role-based madrasah system: 15 domain modules, Laravel + Inertia (React), 2FA, staged UAT.", cat:"work", big:1, img:"assets/ma-admin.webp"},
+  {word:"CTF skills",     kicker:"Agent skills",        line:"Skills for CTF: web, pwn, crypto, reverse, forensics, OSINT.", cat:"work", big:1, href:GH+"ctf", linkLabel:"View on GitHub"},
+  {word:"Payload-all",    kicker:"Payload arsenal",     line:"Test payload collection: SQLi, XSS, LFI.", cat:"work", big:1, href:GH+"payload-all", linkLabel:"View on GitHub"},
+  {word:"2nd place",      kicker:"Cyber Combat · PLAY IT 2026", line:"National attack-defense competition, 22-23 Jun 2026, Politeknik Negeri Malang. Team newfolder_.", cat:"wins", big:1, img:"assets/playit.webp"},
+  {word:"Best attack",    kicker:"PLAY IT 2026",        line:"2nd, Best Attack category of Cyber Combat. Announced by organiser @playit_jti.", cat:"wins", big:1},
+  {word:"Top 7",          kicker:"SEVIMA Security Challenge", line:"7th of 41 teams, 271 participants. Team lead of NSA-LR. Sep 2026.", cat:"wins", big:1, img:"assets/sevima.webp"},
+  {word:"1st place",      kicker:"Campus CTF",          line:"Won the internal Capture The Flag competition, Politeknik Negeri Cilacap.", cat:"wins", big:1},
+  {word:"Idham",          kicker:"Muhammad Idham Akbar", line:"I study how systems fail, and I build software that is meant not to.", cat:"about", big:1, img:"assets/playit-team-portrait.webp"},
+  {word:"D4 RKS",         kicker:"Polines Cilacap",     line:"Cybersecurity Engineering, 2024-now. GPA 3.12/4.00. Red team, web security, forensics.", cat:"about", big:1},
+  {word:"Speaker",        kicker:"Red Team · JKB LC",   line:"Red Team speaker, JKB Learning Center 2026. HIMA Komputer dan Bisnis.", cat:"about", big:1, img:"assets/pemateri.webp"},
+  {word:"CCNA",           kicker:"Cisco NetAcad · 2025", line:"CCNA: Introduction to Networks. Jul 2025.", cat:"about", big:1, img:"assets/ccna.webp"},
+  {word:"VSGA",           kicker:"Junior Network Admin", line:"VSGA Komdigi scholarship program, 24 h. Jul 2025.", cat:"about", big:1, img:"assets/vsga.webp"},
+  {word:"Ambassador",     kicker:"Duta Kampus",         line:"Selected campus ambassador, Politeknik Negeri Cilacap.", cat:"about", big:1},
+  {word:"Hello@",         kicker:"idhamygy@gmail.com",  line:"idhamygy@gmail.com", cat:"contact", big:1, href:"mailto:idhamygy@gmail.com", linkLabel:"Send email"},
+  {word:"GitHub",         kicker:"@net1nfect",          line:"github.com/net1nfect", cat:"contact", big:1, href:GH, linkLabel:"Open profile"},
+  {word:"LinkedIn",       kicker:"Muhammad Idham Akbar", line:"in/muhammad-idham-akbar", cat:"contact", big:1, href:"https://www.linkedin.com/in/muhammad-idham-akbar-390765346/", linkLabel:"Open profile"},
+  {word:"+62 856",        kicker:"WhatsApp",            line:"+62 856-4185-2592", cat:"contact", big:1, href:"tel:+6285641852592", linkLabel:"Call"}
+];
+const LABELS = ["PYTHON","LARAVEL","REACT","BURP","GHIDRA","SQLMAP","DOCKER","KALI","TAILWIND"]
+  .map(w=>({word:w,kicker:"",line:"",cat:"label",big:0}));
+const COLORS = ["#ff5fa8","#ffd23f","#3f6bff","#3fe0a8","#ff8a2a","#8b5cff","#c8f03c","#5cc8ff","#1c1c22","#ffffff"];
+const DARK_TEXT_ON = new Set(["#ffd23f","#3fe0a8","#ff8a2a","#c8f03c","#5cc8ff","#ffffff"]);
+const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ================= dom ================= */
+const slipsLayer = document.getElementById("slips");
+const tray = document.getElementById("tray");
+const trayHint = document.getElementById("trayHint");
+const countEl = document.getElementById("count");
+const gunStage = document.getElementById("gunStage");
+const detail = document.getElementById("detail");
+const dKicker = document.getElementById("dKicker");
+const dTitle = document.getElementById("dTitle");
+const dLine = document.getElementById("dLine");
+const dLink = document.getElementById("dLink");
+const dNo = document.getElementById("dNo");
+
+let sprayed = 0;
+let shots = 0;                     // total trigger pulls (for milestones)
+let spawnTick = 0;                 // every 4th spawn is a label
+const typeState = new Map();       // word -> state
+const docked = [];                 // types in arrival order
+const flyers = new Set();
+let spraying = false, sprayTimer = null;
+
+const DH = () => Math.max(44, Math.round(58 * Math.min(1, tray.clientWidth / 620)));
+
+/* ================= tray layout ================= */
+function layoutTray(){
+  const h = DH();
+  for(const t of docked){
+    if(!t.dock) continue;
+    t.dock.style.height = h + "px";
+    t.dock.style.width = Math.round(t.spawnW * (h/t.spawnH)) + "px";
+    t.dock.style.setProperty("--dh", h + "px");
+  }
+  trayHint.style.display = docked.length ? "none" : "flex";
+}
+addEventListener("resize", layoutTray);
+
+/* ================= slips ================= */
+function pickType(cat){
+  if(++spawnTick % 4 === 0){
+    const lbl = LABELS[Math.floor(Math.random()*LABELS.length)];
+    return getType(lbl);
+  }
+  const pool = PROJECTS.filter(p => p.cat === cat);
+  return getType(pool[Math.floor(Math.random()*pool.length)]);
+}
+function getType(def){
+  if(!typeState.has(def.word)){
+    const i = typeState.size;
+    const color = COLORS[i % COLORS.length];
+    const h = def.big ? 84 : 64, w = def.big ? 220 : 88;
+    typeState.set(def.word, {...def, idx:i+1, color, spawnW:w, spawnH:h, dock:null, textDark:DARK_TEXT_ON.has(color)});
+  }
+  return typeState.get(def.word);
+}
+function sprayedOnce(){ sprayed++; countEl.textContent = sprayed; }
+/* every 25 trigger pulls: gold achievement slip + paper confetti */
+function milestone(){
+  const def = {word:"Achievement", kicker:shots+" slips sprayed", line:"Keep pulling — the tray keeps count.", cat:"label", big:1};
+  sprayType(getType(def));
+  const r = tray.getBoundingClientRect();
+  for(let i=0;i<16;i++){
+    const c = document.createElement("div");
+    c.className = "shell-casing"; c.style.width = "8px"; c.style.height = "12px";
+    c.style.background = COLORS[i % COLORS.length];
+    const x0 = r.left + Math.random()*r.width;
+    c.style.transform = `translate(${x0}px,${r.top}px)`;
+    slipsLayer.appendChild(c);
+    c.animate([
+      {transform:`translate(${x0}px,${r.top}px) rotate(0deg)`, opacity:1},
+      {transform:`translate(${r.left+Math.random()*r.width}px,${r.top+120+Math.random()*140}px) rotate(${Math.random()*540-270}deg)`, opacity:0}
+    ], {duration:900+Math.random()*500, easing:"cubic-bezier(.3,.7,.4,1)"}).onfinish = ()=>c.remove();
+  }
+}
+
+function spawnFlyer(t, isDup){
+  const m = document.getElementById("muzzleAnchor").getBoundingClientRect();
+  const ox = m.left, oy = m.top;   // exact muzzle tip, gun rotation included
+
+  const h = DH();
+  t.w = Math.round(t.spawnW * (h / t.spawnH));
+  if(!t.dock) makeDock(t);
+
+  const el = document.createElement("div");
+  el.className = "slip-fly";
+  el.style.width = t.spawnW+"px"; el.style.height = t.spawnH+"px";
+  el.style.borderRadius = "7px";
+  el.style.background = t.color;
+  el.style.color = t.textDark ? "#111" : "#fff";
+  el.style.boxShadow = "0 10px 22px rgba(0,0,0,.18)";
+  el.innerHTML = slipInner(t, t.spawnH);
+  // pre-position at the muzzle tip so the very first paint is already at the gun
+  el.style.transform = `perspective(700px) translate(${ox}px, ${oy}px) scale(0.35)`;
+  slipsLayer.appendChild(el);
+
+  // fire cone aligned with the barrel (barrel points ~164deg: left + slightly down)
+  const ang = (154 + Math.random()*20) * Math.PI/180;
+  const speed = 7 + Math.random()*5;
+  const f = {
+    t, el, isDup: !!isDup, ox, oy,
+    x: 0, y: 0, vx: Math.cos(ang)*speed, vy: Math.sin(ang)*speed,
+    rot: (Math.random()*40-20), vr: (Math.random()*14-7),
+    age: 0, phase: Math.random()*10,
+    flyDur: isDup ? 0.3 : ((REDUCED ? 0.45 : 0.7) + Math.random()*0.4),
+    gliding: false, gt: 0, duplicate: !!isDup
+  };
+  flyers.add(f);
+  kickLoop();
+}
+
+function slipInner(t, h){
+  const long = t.word.replace(/[^a-z]/gi,"").length > 9;
+  if(!t.big) return `<div class="w" style="font-size:${Math.round(h*.30)}px">${t.word}</div>`;
+  const fs = Math.round(h * (long ? .30 : .36));
+  return `<div class="w" style="font-size:${fs}px">${t.word}</div>` +
+         (t.kicker ? `<div class="s">${t.kicker}</div>` : "");
+}
+
+function paintFlyer(f){
+  if(!f.gliding){
+    f.vy = Math.min(f.vy + 0.28, 5);
+    f.vx *= 0.975;
+    const sway = Math.sin(f.age*9 + f.phase) * 1.4;
+    f.x += f.vx; f.y += f.vy;
+    f.rot += f.vr;
+    const rx = Math.sin(f.age*6 + f.phase) * (REDUCED ? 20 : 55);
+    // pushed out of the slot: quick scale-in during the first frames
+    const grow = Math.min(1, 0.35 + f.age*5);
+    f.el.style.transform =
+      `perspective(700px) translate(${f.ox + f.x + sway}px, ${f.oy + f.y}px) rotate(${f.rot}deg) rotateX(${rx}deg) scale(${grow})`;
+    if(f.age >= f.flyDur){
+      f.gliding = true; f.gt = 0;
+      const dr = f.t.dock.getBoundingClientRect();
+      const sc = DH() / f.t.spawnH;
+      f.sx = f.ox + f.x; f.sy = f.oy + f.y;
+      // glide in VIEWPORT coords (flyer lives in a fixed layer):
+      // land centered on the dock, compensating scale-about-center
+      f.tx = dr.left + (dr.width  - f.t.spawnW) / 2;
+      f.ty = dr.top  + (dr.height - f.t.spawnH) / 2;
+      f.srot = f.rot; f.ssc = 1; f.tsc = sc;
+    }
+  } else {
+    const dur = REDUCED ? 0.3 : 0.7;
+    f.gt = Math.min(1, f.gt + 1/60/dur);
+    const e = 1 - Math.pow(1 - f.gt, 3); // ease-out cubic
+    const x = f.sx + (f.tx - f.sx)*e, y = f.sy + (f.ty - f.sy)*e;
+    const r = f.srot * (1-e), sc = f.ssc + (f.tsc - f.ssc)*e;
+    f.el.style.transform = `translate(${x}px, ${y}px) rotate(${r}deg) scale(${sc})`;
+    if(f.duplicate) f.el.style.opacity = String(1 - f.gt);
+    if(f.gt >= 1) arrive(f);
+  }
+  f.age += 1/60;
+}
+
+function arrive(f){
+  flyers.delete(f);
+  f.el.remove();
+  const t = f.t;
+  if(f.duplicate){
+    // twin hops, duplicate vanishes
+    t.dock.classList.remove("hop"); void t.dock.offsetWidth; t.dock.classList.add("hop");
+  } else {
+    t.dock.style.opacity = "1";
+    t.dock.style.pointerEvents = "auto";
+    t.dock.classList.add("land");
+    setTimeout(()=>{ if(t.dock) t.dock.classList.remove("land"); }, 400);
+    layoutTray();
+  }
+}
+
+function makeDock(t){
+  const h = DH();
+  const d = document.createElement("div");
+  d.className = "dock " + (t.big ? "big" : "label") + (t.big && t.word.replace(/[^a-z]/gi,"").length>9 ? " longword" : "");
+  d.style.width = Math.round(t.spawnW * (h/t.spawnH)) + "px";
+  d.style.height = h + "px";
+  d.style.background = t.color;
+  d.style.color = t.textDark ? "#111" : "#fff";
+  d.innerHTML = t.big ? `<div class="w">${t.word}</div><div class="s">${t.kicker}</div>`
+                      : `<div class="w">${t.word}</div>`;
+  d.addEventListener("click", () => openDetail(t));
+  tray.appendChild(d);
+  t.dock = d;
+  if(!docked.includes(t)) docked.push(t);
+  // hidden until its flyer glides in
+  d.style.opacity = "0";
+  d.style.pointerEvents = "none";
+  return d;
+}
+
+/* ================= main loop ================= */
+let rafId = null;
+function loop(){
+  for(const f of [...flyers]){
+    try{ paintFlyer(f); }catch(err){ flyers.delete(f); f.el.remove(); console.error(err); }
+  }
+  if(flyers.size) rafId = requestAnimationFrame(loop);
+  else rafId = null;
+}
+function kickLoop(){ if(!rafId) rafId = requestAnimationFrame(loop); }
+
+function recoil(){
+  gunStage.classList.remove("recoil"); void gunStage.offsetWidth;
+  gunStage.classList.add("recoil");
+}
+
+/* ================= gun alive: flash + shell + smoke ================= */
+function fireFx(){
+  gunStage.classList.remove("firing"); void gunStage.offsetWidth;
+  gunStage.classList.add("firing");
+  setTimeout(()=>gunStage.classList.remove("firing"), 150);
+  if(!REDUCED){ spawnShell(); if(Math.random() < .5) spawnSmoke(); }
+}
+function spawnShell(){
+  const a = document.getElementById("shellAnchor").getBoundingClientRect();
+  const el = document.createElement("div");
+  el.className = "shell-casing";
+  el.style.transform = `translate(${a.left}px,${a.top}px)`;
+  slipsLayer.appendChild(el);
+  const dx = 60 + Math.random()*50, rot = Math.random()*720 - 360;
+  el.animate([
+    {transform:`translate(${a.left}px,${a.top}px) rotate(0deg)`, opacity:1},
+    {transform:`translate(${a.left + dx*.5}px,${a.top - 46 - Math.random()*20}px) rotate(${rot*.5}deg)`, opacity:1, offset:.45},
+    {transform:`translate(${a.left + dx}px,${a.top + 70 + Math.random()*40}px) rotate(${rot}deg)`, opacity:0}
+  ], {duration: REDUCED ? 200 : 650, easing:"cubic-bezier(.2,.6,.4,1)"}).onfinish = ()=>el.remove();
+}
+function spawnSmoke(){
+  const m = document.getElementById("muzzleAnchor").getBoundingClientRect();
+  for(let i=0;i<2;i++){
+    const s = document.createElement("div");
+    s.className = "smoke";
+    s.style.left = m.left + "px"; s.style.top = m.top + "px";
+    s.style.setProperty("--sx", (-30 - Math.random()*40 - i*22) + "px");
+    s.style.setProperty("--sy", (-24 - Math.random()*30) + "px");
+    slipsLayer.appendChild(s);
+    setTimeout(()=>s.remove(), 1250);
+  }
+}
+
+/* ================= spraying ================= */
+function sprayType(t){
+  shots++;
+  if(!REDUCED && shots % 25 === 0) milestone();
+  if(t.dock){ spawnFlyer(t, true); }      // duplicate: glide to twin, twin hops
+  else { sprayedOnce(); spawnFlyer(t, false); }
+  recoil(); fireFx();
+}
+function sprayOnce(cat){ sprayType(pickType(cat)); }
+
+function startSpray(cat){
+  if(spraying) return;
+  spraying = true;
+  sprayBtn.classList.add("pressed");
+  sprayOnce(cat);
+  sprayTimer = setInterval(()=>sprayOnce(cat), REDUCED ? 170 : 85);
+}
+function stopSpray(){
+  if(!spraying) return;
+  spraying = false;
+  sprayBtn.classList.remove("pressed");
+  clearInterval(sprayTimer);
+}
+
+const sprayBtn = document.getElementById("sprayBtn");
+sprayBtn.addEventListener("pointerdown", e=>{ e.preventDefault(); startSpray(randCat()); });
+addEventListener("pointerup", stopSpray);
+sprayBtn.addEventListener("pointerleave", stopSpray);
+addEventListener("keydown", e=>{
+  if(e.target && (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA")) return;
+  if(e.code === "Space" && !e.repeat){ e.preventDefault(); startSpray(randCat()); }
+});
+addEventListener("keyup", e=>{ if(e.code === "Space") stopSpray(); });
+function randCat(){
+  const cats = ["work","work","work","wins","about","contact"];
+  return cats[Math.floor(Math.random()*cats.length)];
+}
+
+/* click the gun itself: single shot */
+gunStage.addEventListener("click", ()=>{ if(!spraying) sprayOnce(randCat()); });
+
+/* clean up */
+document.getElementById("cleanBtn").addEventListener("click", ()=>{
+  stopSpray();
+  for(const t of docked){
+    t.dock.style.opacity = "0";
+    setTimeout(((d)=>()=>d.remove())(t.dock), REDUCED ? 60 : 400);
+    t.dock = null;
+  }
+  docked.length = 0;
+  detail.classList.remove("open");
+  trayHint.style.display = "flex";
+});
+
+/* custom eased scroll (frame-per-frame, easeInOutCubic) */
+function animateScrollTo(sec){
+  const y = sec.getBoundingClientRect().top + window.scrollY - 84;
+  if(REDUCED){ window.scrollTo(0, y); return; }
+  const from = window.scrollY, dist = y - from, dur = 950, t0 = performance.now();
+  (function step(now){
+    const p = Math.min(1, (now - t0) / dur);
+    const e = p < .5 ? 4*p*p*p : 1 - Math.pow(-2*p + 2, 3) / 2;
+    window.scrollTo(0, from + dist * e);
+    if(p < 1) requestAnimationFrame(step);
+  })(t0);
+}
+
+/* nav categories: spray the category into the tray, then glide to its section */
+document.querySelectorAll(".nav-menu button").forEach(btn=>{
+  btn.addEventListener("click", ()=>{
+    const cat = btn.dataset.cat;
+    const pool = PROJECTS.filter(p=>p.cat===cat);
+    if(!pool.length) return;
+    stopSpray();
+    pool.forEach((p,i)=> setTimeout(()=>{ sprayType(p); }, i * (REDUCED?190:95)));
+    const sec = document.getElementById(cat);
+    if(sec) setTimeout(()=>animateScrollTo(sec), (REDUCED?190:95));
+  });
+});
+
+/* detail card */
+function openDetail(t){
+  dNo.textContent = "CASE FILE · Nº " + String(t.idx || 0).padStart(3, "0");
+  dKicker.textContent = t.kicker || (t.cat==="label" ? "Label" : "Work");
+  dTitle.textContent = t.word;
+  dLine.textContent = t.line || "";
+  const proof = document.getElementById("dProof");
+  if(t.img){ proof.src = t.img; proof.style.display = "block"; }
+  else { proof.removeAttribute("src"); proof.style.display = "none"; }
+  if(t.href){
+    dLink.href = t.href;
+    dLink.textContent = (t.linkLabel || "Open") + " ↗";
+    dLink.hidden = false;
+  } else { dLink.hidden = true; dLink.removeAttribute("href"); }
+  detail.classList.add("open");
+}
+document.getElementById("detailClose").addEventListener("click", ()=>detail.classList.remove("open"));
+
+/* keep docked sizes in sync on resize */
+addEventListener("resize", ()=>{
+  const h = DH();
+  for(const t of docked){
+    if(!t.dock) continue;
+    t.dock.style.height = h+"px";
+    t.dock.style.width = Math.round(t.spawnW*(h/t.spawnH))+"px";
+  }
+  layoutTray();
+});
+
+/* auto burst on load */
+setTimeout(()=>{
+  let i = 0;
+  const iv = setInterval(()=>{
+    sprayOnce(randCat());
+    if(++i >= 20) clearInterval(iv);
+  }, REDUCED ? 190 : 95);
+}, REDUCED ? 300 : 700);
+
+/* sections: reveal on scroll (staggered inside grids) + active nav highlight */
+document.querySelectorAll(".wins-grid,.facts,.cert-row,.chip-row").forEach(g=>{
+  [...g.children].forEach((c,i)=>{ if(c.classList.contains("rv")) c.style.transitionDelay = (i*80)+"ms"; });
+});
+const io = new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add("in");
+      io.unobserve(e.target);
+      setTimeout(()=>{ e.target.style.transitionDelay = ""; e.target.classList.add("done"); }, 1000);
+    }
+  });
+}, {threshold:.12});
+document.querySelectorAll(".rv").forEach(el=>io.observe(el));
+
+const navBtns = document.querySelectorAll(".nav-menu button");
+const secIo = new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      navBtns.forEach(b=>b.classList.toggle("active", b.dataset.cat === e.target.id));
+    }
+  });
+}, {rootMargin:"-35% 0px -55% 0px"});
+["work","wins","about","contact"].forEach(id=>{
+  const s = document.getElementById(id);
+  if(s) secIo.observe(s);
+});
+
+/* the gun aims at the cursor (desktop, motion allowed) */
+if(!REDUCED && matchMedia("(pointer:fine)").matches){
+  addEventListener("mousemove", e=>{
+    const r = gunStage.getBoundingClientRect();
+    const dx = (e.clientX - (r.left + r.width/2)) / window.innerWidth;
+    gunStage.style.setProperty("--aim", (dx*4).toFixed(2) + "deg");
+  }, {passive:true});
+}
+
+/* ================= secret terminal (press ~) ================= */
+const term = document.getElementById("term");
+const termOut = document.getElementById("termOut");
+const termIn = document.getElementById("termIn");
+let termOpen = false;
+const termHist = []; let histIdx = -1;
+function tprint(txt, cls){
+  const d = document.createElement("div");
+  if(cls) d.className = cls;
+  d.textContent = txt;
+  termOut.appendChild(d);
+  termOut.scrollTop = termOut.scrollHeight;
+}
+function techo(cmd){
+  const d = document.createElement("div");
+  d.innerHTML = `<span class="p">idham@portfolio:~$</span> ${cmd.replace(/</g,"&lt;")}`;
+  termOut.appendChild(d);
+  termOut.scrollTop = termOut.scrollHeight;
+}
+function openTerm(){
+  term.hidden = false;
+  requestAnimationFrame(()=>term.classList.add("open"));
+  termOpen = true;
+  setTimeout(()=>termIn.focus(), 80);
+  if(!termOut.childNodes.length){
+    tprint("idham-shell 1.0 — type 'help' to get started.", "dim");
+    tprint("\"Trust the vibes. Never trust the input.\"", "g");
+  }
+}
+function closeTerm(){
+  term.classList.remove("open");
+  termOpen = false;
+  termIn.blur();
+  setTimeout(()=>{ term.hidden = true; }, 230);
+}
+function runCmd(raw){
+  const cmd = raw.trim();
+  if(!cmd) return;
+  techo(cmd);
+  termHist.push(cmd); histIdx = termHist.length;
+  const parts = cmd.split(/\s+/);
+  const c = parts[0].toLowerCase(), arg = parts.slice(1).join(" ");
+  switch(c){
+    case "help":
+      tprint("whoami            who is behind this portfolio");
+      tprint("ls projects/      things I built");
+      tprint("ls skills/        tools I use");
+      tprint("cat contact.txt   how to reach me");
+      tprint("spray             fire the gun once");
+      tprint("clean             clean up the tray");
+      tprint("vibe              the motto");
+      tprint("sudo hire-idham   the fast path");
+      tprint("clear · exit", "dim");
+      break;
+    case "whoami":
+      tprint("Muhammad Idham Akbar — D4 Cybersecurity Engineering, Politeknik Negeri Cilacap.");
+      tprint("I study how systems fail, and I build software that is meant not to.", "g");
+      break;
+    case "ls":
+      if(arg.startsWith("projects")) tprint("wth-ai/  h1r3v/  windows-exploit/  ma-futuhiyah/  ctf-skills/  payload-all/");
+      else if(arg.startsWith("skills")) tprint("python/  laravel/  react/  burp-suite/  ghidra/  sqlmap/  docker/  kali/  tailwind/");
+      else tprint(`ls: cannot access '${arg || "~"}': no such file or directory`, "dim");
+      break;
+    case "cat":
+      if(arg.includes("contact")){
+        tprint("email     idhamygy@gmail.com");
+        tprint("github    github.com/net1nfect");
+        tprint("linkedin  in/muhammad-idham-akbar");
+        tprint("whatsapp  +62 856-4185-2592", "g");
+      } else tprint(`cat: ${arg || "?"}: no such file`, "dim");
+      break;
+    case "spray":
+      sprayOnce(randCat());
+      tprint("pew.", "g");
+      break;
+    case "clean":
+      document.getElementById("cleanBtn").click();
+      tprint("tray cleaned.", "g");
+      break;
+    case "sudo":
+      if(arg === "hire-idham"){
+        tprint("[sudo] password for recruiter: ********", "dim");
+        setTimeout(()=>tprint("Access granted. Opening mail client...", "g"), 450);
+        setTimeout(()=>{ location.href = "mailto:idhamygy@gmail.com?subject=Let%27s%20talk"; }, 1200);
+      } else tprint("sudo: only 'hire-idham' is allowed here.", "dim");
+      break;
+    case "vibe":
+      tprint("\"Trust the vibes. Never trust the input.\" — idham", "g");
+      break;
+    case "clear":
+      termOut.innerHTML = "";
+      break;
+    case "exit": case "q":
+      closeTerm();
+      break;
+    default:
+      tprint(`zsh: command not found: ${c} — try 'help'`, "dim");
+  }
+}
+termIn.addEventListener("keydown", e=>{
+  e.stopPropagation(); // keep Space/~ away from the spray gun while typing
+  if(e.key === "Enter"){ runCmd(termIn.value); termIn.value = ""; }
+  else if(e.key === "ArrowUp"){ if(histIdx > 0){ histIdx--; termIn.value = termHist[histIdx] || ""; } e.preventDefault(); }
+  else if(e.key === "ArrowDown"){ if(histIdx < termHist.length){ histIdx++; termIn.value = termHist[histIdx] || ""; } e.preventDefault(); }
+  else if(e.key === "Escape") closeTerm();
+});
+document.getElementById("termClose").addEventListener("click", closeTerm);
+
+/* drag the terminal like a macOS window (by its title bar) */
+const termBar = term.querySelector(".term-bar");
+let termDrag = null;
+termBar.addEventListener("pointerdown", e=>{
+  if(e.target.closest("button")) return;
+  const r = term.getBoundingClientRect();
+  term.style.left = r.left + "px"; term.style.top = r.top + "px";
+  term.style.right = "auto"; term.style.bottom = "auto";
+  term.style.transform = "none"; term.style.transition = "none";
+  termDrag = {dx: e.clientX - r.left, dy: e.clientY - r.top};
+  try{ termBar.setPointerCapture(e.pointerId); }catch(_){}
+  termBar.classList.add("grabbing");
+});
+termBar.addEventListener("pointermove", e=>{
+  if(!termDrag) return;
+  const x = Math.max(8, Math.min(window.innerWidth  - term.offsetWidth  - 8, e.clientX - termDrag.dx));
+  const y = Math.max(8, Math.min(window.innerHeight - 52, e.clientY - termDrag.dy));
+  term.style.left = x + "px"; term.style.top = y + "px";
+});
+const endTermDrag = e=>{
+  if(!termDrag) return;
+  termDrag = null;
+  termBar.classList.remove("grabbing");
+  try{ termBar.releasePointerCapture(e.pointerId); }catch(_){}
+};
+termBar.addEventListener("pointerup", endTermDrag);
+termBar.addEventListener("pointercancel", endTermDrag);
+termBar.addEventListener("dblclick", ()=>{ // double-click title bar: snap back to center
+  ["left","top","right","bottom","transform","transition"].forEach(p=>term.style[p] = "");
+});
+addEventListener("keydown", e=>{
+  if(e.target === termIn) return;
+  if(e.key === "`" || e.key === "~"){ e.preventDefault(); termOpen ? closeTerm() : openTerm(); }
+  else if(e.key === "Escape" && termOpen) closeTerm();
+});
+window.__seqIdx = undefined; /* legacy debug handle removed */
+window.__shots = () => shots; // debug handle
+})();
+</script>
+</body>
+</html>

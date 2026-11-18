@@ -315,8 +315,9 @@ h1 .serif{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400
 @keyframes smokeUp{to{transform:translate(var(--sx),var(--sy)) scale(2.4);opacity:0}}
 
 /* ---------- terminal ---------- */
-#term{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(18px);width:min(760px,94vw);height:min(56vh,480px);z-index:90;background:#0d0d12;border-radius:14px;box-shadow:0 40px 90px rgba(0,0,0,.45);display:flex;flex-direction:column;opacity:0;transition:opacity .2s ease,transform .22s cubic-bezier(.22,1,.36,1);overflow:hidden;border:1px solid #26262e}
-#term.open{opacity:1;transform:translateX(-50%) translateY(0)}
+#term{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(18px);width:min(760px,94vw);height:min(56vh,480px);z-index:90;background:#0d0d12;border-radius:14px;box-shadow:0 40px 90px rgba(0,0,0,.45);display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .2s ease,transform .22s cubic-bezier(.22,1,.36,1);overflow:hidden;border:1px solid #26262e}
+#term.open{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto}
+#term[hidden]{display:none}
 .term-bar{display:flex;align-items:center;gap:8px;padding:10px 14px;background:#16161d;font-size:12px;color:#9a9aa5;font-weight:700;letter-spacing:.06em;cursor:grab;user-select:none;touch-action:none}
 .term-bar.grabbing{cursor:grabbing}
 .term-dot{width:10px;height:10px;border-radius:50%;background:#ff5f57;box-shadow:16px 0 0 #febc2e,32px 0 0 #28c840;margin-right:34px}
